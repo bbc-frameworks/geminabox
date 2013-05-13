@@ -37,11 +37,11 @@ class GeminaboxClient
   end
 
   def set_ssl_options(options = {})
-    if(options[:ssl_client_cert] && options[:ssl_client_key])
+    if((options[:ssl_client_cert] != nil) && (options[:ssl_client_key] != nil))
        @http_client.ssl_config.set_client_cert_file(options[:ssl_client_cert], options[:ssl_client_key])
     end
-    if(options[:ssl_trust_ca])
-      @http_client.add_trust_ca(options[:ssl_trust_ca])
+    if(options[:ssl_trust_ca] != nil)
+      @http_client.ssl_config.add_trust_ca(options[:ssl_trust_ca])
     end
   end
 end

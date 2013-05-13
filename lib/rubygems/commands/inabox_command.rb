@@ -28,15 +28,15 @@ class Gem::Commands::InaboxCommand < Gem::Command
       options[:overwrite] = true
     end
 
-    add_option('-s', '--sslclientcert', "SSL client certificate file.") do |value, options|
+    add_option('-s', '--sslclientcert CERT', "SSL client certificate file.") do |value, options|
       options[:ssl_client_cert] = value
     end
 
-    add_option('-k', '--sslclientkey', "SSL client private key file.") do |value, options|
+    add_option('-k', '--sslclientkey KEY', "SSL client private key file.") do |value, options|
       options[:ssl_client_key] = value
     end
 
-    add_option('-t', '--ssltrustca', "SSL trust CA file or hashed directory.") do |value, options|
+    add_option('-t', '--ssltrustca TRUSTCA', "SSL trust CA file or hashed directory.") do |value, options|
       options[:ssl_trust_ca] = value
     end
   end
