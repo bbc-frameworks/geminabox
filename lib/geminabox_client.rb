@@ -36,6 +36,14 @@ class GeminaboxClient
     end
   end
 
+  def set_ssl_options(options = {})
+    if(options[:ssl_client_cert] && options[:ssl_client_key])
+       @http_client.ssl_config.set_client_cert_file(options[:ssl_client_cert], options[:ssl_client_key])
+    end
+    if(options[:ssl_trust_ca])
+      @http_client.add_trust_ca(options[:ssl_trust_ca])
+    end
+  end
 end
 
 class GeminaboxClient::Error < RuntimeError

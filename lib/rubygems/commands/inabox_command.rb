@@ -27,6 +27,18 @@ class Gem::Commands::InaboxCommand < Gem::Command
     add_option('-o', '--overwrite', "Overwrite Gem.") do |value, options|
       options[:overwrite] = true
     end
+
+    add_option('-s', '--sslclientcert', "SSL client certificate file.") do |value, options|
+      options[:ssl_client_cert] = value
+    end
+
+    add_option('-k', '--sslclientkey', "SSL client private key file.") do |value, options|
+      options[:ssl_client_key] = value
+    end
+
+    add_option('-t', '--ssltrustca', "SSL trust CA file or hashed directory.") do |value, options|
+      options[:ssl_trust_ca] = value
+    end
   end
 
   def last_minute_requires!
@@ -51,6 +63,7 @@ class Gem::Commands::InaboxCommand < Gem::Command
 
   def send_gems(gemfiles)
     client = GeminaboxClient.new(geminabox_host)
+    client.set_ssl_options(options)
 
     gemfiles.each do |gemfile|
       say "Pushing #{File.basename(gemfile)} to #{client.url}..."
