@@ -60,6 +60,9 @@ Simples!
         -c, --configure                  Configure GemInABox
         -g, --host HOST                  Host to upload to.
         -o, --overwrite                  Overwrite Gem.
+        -s, --sslclientcert CERT         SSL client certificate file
+        -k, --sslclientkey KEY           SSL client private key file
+        -t, --ssltrustca TRUSTCA         SSL trust CA file
 
 
       Common Options:
